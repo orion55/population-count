@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Тестовое задание Геоцентр-консалтинг 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Задача
 
-## Available Scripts
+Необходимо реализовать функционал подсчета населения на заданной произвольной территории:
+* Пользователь должен иметь возможность задать на карте произвольный полигон, а также иметь возможность его редактировать, путем перетаскивания или удаления вершин (удаление должно производиться по двойному клику на вершине полигона). В качестве примера работы с полигоном можно ориентироваться на инструмент измерения площади: https://rumap.ru/?l=Geocenter&c=50.600189:36.586027&zoom=15.972729410131096&tab=searchresults&sidebarActive&rotation=0.000429&measureArea=50.600147,36.583118;50.602312,36.583949;50.602423,36.589985;50.599176,36.591362;a
+* Полученный полигон необходимо отправить в сервис подсчета населения
+* Результат от сервиса необходимо вывести в центр полигона, если полигон отредактирован пользователем, то необходимо вывести новое значение по количеству населения
+* Должна быть возможность полностью удалить полигон одним действием
+* Должен быть реализован контрол, который активирует механизм рисовки полигона и подсчета населения, при повторном нажатии механизм отрисовки и редактирования полигона должен отключаться
 
-In the project directory, you can run:
+## Требования к результату:
 
-### `yarn start`
+* Работающее приложение должно быть опубликовано в интернете
+* Необходимо выслать архив с исходниками проекта
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Использовать для решения задачи:
+* для работы с картой openlayers или leaflet
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Комментарии исполнителя
+В ТЗ много неявных вариантов реализации, которые я решил на своё усмотрение
 
-### `yarn test`
+## Развёртывание проекта
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Вот краткое введение о том, что должен сделать разработчик, чтобы начать дальнейшую разработку проекта:
+```
+git clone https://github.com/orion55/population-count.git
+cd population-count/
+npm install
+npm start
+```
 
-### `yarn build`
+### Компиляция и горячая перезагрузка для разработки
+```
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Компиляция и минификация для продакшена
+```
+npm run make-build
+```
+## Ссылки
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Домашняя страница: https://orion55.github.io/population-count/
+- Repository: https://github.com/orion55/population-count.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Licensing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Код в этом проекте распространяется по лицензии MIT.
