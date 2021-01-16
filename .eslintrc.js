@@ -37,5 +37,6 @@ module.exports = {
     camelcase: 'off',
     'no-nested-ternary': 'off',
     'no-debugger': 'off',
+    'consistent-return': 'off',
   },
 };

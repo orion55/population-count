@@ -12,7 +12,7 @@ body {
 }
 
 #root {
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    background: lightgray;
     min-height: 100vh;
     position: relative;
     display: flex;

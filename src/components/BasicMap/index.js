@@ -5,32 +5,40 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-draw/dist/leaflet.draw.css';
 import styles from './styles.module.css';
 import config from '../../config/config';
+import MarkersList from '../MarkersList';
+import { getAreaStatistics } from '../../libs/utils';
 
 const BasicMap = () => {
   const [mapLayers, setMapLayers] = useState([]);
+  const [markers, setMarkers] = useState([]);
   const mapRef = useRef();
 
-  const onCreate = (e) => {
-    // console.log(e);
+  const onCreate = async (e) => {
     const { layerType, layer } = e;
     if (layerType === 'polygon') {
       const { _leaflet_id } = layer;
-
-      setMapLayers((layers) => [
-        ...layers,
-        { id: _leaflet_id, latlngs: layer.getLatLngs()[0] },
-      ]);
+      setMapLayers((layers) => [...layers, { id: _leaflet_id, latlngs: layer.getLatLngs()[0] }]);
+      const count = await getAreaStatistics(layer);
+      setMarkers((oldMarkers) => [...oldMarkers, { id: _leaflet_id, position: layer.getCenter(), count }]);
     }
   };
 
   const onEdited = (e) => {
-    // console.log(e);
     const { layers: { _layers } } = e;
+    console.log(e);
 
-    Object.values(_layers).forEach(({ _leaflet_id, editing }) => {
-      setMapLayers((layers) => layers.map((l) => (l.id === _leaflet_id
-        ? { ...l, latlngs: { ...editing.latlngs[0] } }
-        : l)));
+    Object.values(_layers).forEach((layer) => {
+      const { _leaflet_id, editing } = layer;
+
+      setMapLayers((layers) => layers.map((l) => (
+        l.id === _leaflet_id
+          ? { ...l, latlngs: { ...editing.latlngs[0] } }
+          : l)));
+
+      setMarkers((oldMarkers) => oldMarkers.map((l) => (
+        l.id === _leaflet_id
+          ? { ...l, position: layer.getCenter(), count: 100 }
+          : l)));
     });
   };
 
@@ -40,11 +48,12 @@ const BasicMap = () => {
 
     Object.values(_layers).forEach(({ _leaflet_id }) => {
       setMapLayers((layers) => layers.filter((l) => l.id !== _leaflet_id));
+      setMarkers((oldMarkers) => oldMarkers.filter((l) => l.id !== _leaflet_id));
     });
   };
 
   useEffect(() => {
-    console.log(mapLayers);
+    // console.log(mapLayers);
   }, [mapLayers]);
 
   return (
@@ -69,6 +78,7 @@ const BasicMap = () => {
           url={config.maptiler.url}
           attribution={config.maptiler.attribution}
         />
+        <MarkersList markers={markers} />
       </Map>
     </>
   );
