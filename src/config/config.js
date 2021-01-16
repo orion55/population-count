@@ -5,5 +5,5 @@ export default {
   },
   center: { lat: 57.152985, lng: 65.541227 },
   zoomLevel: 9,
-  API: 'http://gis01.rumap.ru/4898/areaStatistics?guid=93BC6341-B35E-4B34-9DFE-26796F64BBB7',
+  API: 'https://gis01.rumap.ru/4898/areaStatistics?guid=93BC6341-B35E-4B34-9DFE-26796F64BBB7',
 };
