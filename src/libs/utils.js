@@ -10,7 +10,7 @@ export const getDist = (layer) => {
 };
 
 export const getAreaStatistics = (layer = null) => new Promise((resolve, reject) => {
-  if (!layer) return reject(new Error('Пустые входные данные'));
+  if (!layer) return reject(new Error('Empty input data'));
 
   const { API } = config;
   const { lat: x, lng: y } = layer.getCenter();
@@ -25,11 +25,16 @@ export const getAreaStatistics = (layer = null) => new Promise((resolve, reject)
 
   axios(data)
     .then((response) => {
-      // console.log(response.data);
-      resolve(response.data.population_rs);
+      if ('code' in response.data) {
+        reject(new Error(response.data.message));
+      }
+      if ('population_rs' in response.data) {
+        resolve(response.data.population_rs);
+      }
+      resolve(0);
     })
     .catch((error) => {
-      reject(new Error('Ошибка получения данных количества населения'));
+      reject(new Error('Error getting population count data'));
     });
 
   return false;

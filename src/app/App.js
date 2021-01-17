@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
+import { ToastProvider } from 'react-toast-notifications';
 import BasicMap from '../components/BasicMap';
 
 function App() {
   return (
-    <BasicMap />
+    <ToastProvider>
+      <BasicMap />
+    </ToastProvider>
   );
 }
 

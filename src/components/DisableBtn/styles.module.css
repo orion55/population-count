@@ -1,0 +1,14 @@
+.disbtn {
+    width: 34px;
+    height: 34px;
+    background-color: #f4f4f4;
+    color: gray;
+    cursor: pointer;
+    position: absolute;
+    top: 130px;
+    right: 11px;
+    z-index: 1000;
+    outline: none;
+    border: 2px solid rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
